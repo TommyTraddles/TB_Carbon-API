@@ -1,5 +1,7 @@
 console.clear()
 
+require("dotenv").config()
+
 const express = require('express')
 const morgan = require('morgan')
 require('dotenv').config()
@@ -15,4 +17,4 @@ app.use(require('./routes')(db))
 app.use(require('./middlewares/path-not-found'))
 app.use(require('./middlewares/error-handler'))
 
-app.listen(process.env.PORT, () => console.info('> ✅ Server up'))
+app.listen(process.env.PORT) || 3001, () => console.info("Listening...")

@@ -1,5 +1,11 @@
-require('dotenv').config()
-const slonik = require('slonik')
+require("dotenv").config();
+const slonik = require("slonik");
 
-const db = slonik.createPool(process.env.SLONIK_URL)
-module.exports = db
+const slonikURL =
+	process.env.NODE_ENV === "production"
+		? process.env.HEROKU_URL
+		: process.env.DB_URL;
+
+const db = slonik.createPool(slonikURL);
+
+module.exports = db;
