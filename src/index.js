@@ -17,4 +17,4 @@ app.use(require('./routes')(db))
 app.use(require('./middlewares/path-not-found'))
 app.use(require('./middlewares/error-handler'))
 
-app.listen(process.env.PORT) || 3001, () => console.info("Listening...")
+app.listen(process.env.PORT || 3001, () => console.info("Listening..."))

@@ -9,7 +9,7 @@
     "db:seeds": "node src/helpers/scripts/seeds.js",
     "db:reset": "npm run db:drop && npm run db:create && npm run db:seeds",
     "dev": "nodemon src/index.js",
-    "start": "node index",
+    "start": "node src/index.js",
     "docker:up": "docker-compose up",
     "docker:start": "docker-compose start",
     "docker:down": "docker-compose down",
