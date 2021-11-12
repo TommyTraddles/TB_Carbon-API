@@ -6,6 +6,7 @@ module.exports = db => {
   router.get('/confirmation/:token', require('./_confirm')(db))
   router.post('/forgot-pass', require('./_forgot-pass')(db))
   router.post('/password/request', require('./_reset-pass')(db))
+  router.post('/login', require('./_login')(db))
 
   return router
 }

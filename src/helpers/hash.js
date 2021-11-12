@@ -8,9 +8,9 @@ const encrypt = async password => {
   return await bcrypt.hash(password, salt)
 }
 
-// const compare = password => async hash => {
-//   return await bcrypt.compare(password, hash)
-// }
+const compare = password => async hash => {
+  return await bcrypt.compare(password, hash)
+}
 
 const create_token = () => {
   return crypto.randomBytes(64).toString('hex')
@@ -18,6 +18,6 @@ const create_token = () => {
 
 module.exports = {
   encrypt,
-  // compare,
+  compare,
   create_token,
 }
