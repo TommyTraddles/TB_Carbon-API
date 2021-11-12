@@ -1,5 +1,6 @@
 const { register } = require("../../database/queries/auth");
 const { hash } = require('../../helpers/index')
+const { mail } = require('../../configs/mailer')
 
 module.exports = (db) => async (req, res, next) => {
   const { email, password, username } = req.body;
@@ -21,8 +22,9 @@ module.exports = (db) => async (req, res, next) => {
       error: new Error("Cannot create user"),
     });
   }
-
+  
   // send confirmation mail
+  await mail.activationMail({ to: email, token })
 
   res.status(200).json({
     succes: true,
