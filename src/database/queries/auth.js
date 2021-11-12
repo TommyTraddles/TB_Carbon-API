@@ -6,16 +6,16 @@ const exists = async (db, {email, username}) => {
   `)
 }
 
-const register = async (db, {email, hash, username, token}) => {
+const register = async (db, {email, hashed, username, token}) => {
   try {
     // confirm doesn't exist
     const result = await exists(db, {email, username})
-    if(result) throw new Error ('Email taken')
+    if(result) throw new Error ('Username or Email taken')
     
     // create user 
     return await db.query(sql`
     INSERT INTO users ( email, username, hash, token_confirm ) 
-    VALUES (${email}, ${username} , ${hash}, ${token});
+    VALUES (${email}, ${username} , ${hashed}, ${token});
     `)
   } catch (e) {
     console.info("> error at 'register' query: ", e.message)
