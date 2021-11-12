@@ -1,6 +1,7 @@
 require('dotenv').config()
 
-const { activation } = require('../helpers/templates')
+const { activation, confirmation } = require('../helpers/templates')
+const { catcher } = require('../utils')
 
 const nodemailer = require("nodemailer");
 // const transporter = nodemailer.createTransport(process.env.MAIL_SMTP);
@@ -12,16 +13,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-module.exports = { 
-  mail: { 
-    activationMail: async({ to, token}) => {
-      try {
-        const template = activation({ to, token })
-        return await transporter.sendMail(template)
-      } catch (e) {
-        console.info("> error at 'activationMail' helper: ", e.message)
-        return false
-      }
-    }
+const send = transporter.sendMail.bind(transporter)
+
+const mail = { 
+  activationMail: async ({ to, token }) => {
+    await catcher(send)(activation({ to, token }))
   },
- }
+  confirmationMail: async ({ to, username }) => {
+    await catcher(send)(confirmation({to, username}))
+  },
+}
+
+module.exports = { mail }

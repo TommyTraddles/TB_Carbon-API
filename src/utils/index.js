@@ -1,5 +1,5 @@
 
-const catcher = (fn) => async (...args) => {
+const catcher = (fn) => async ({...args}) => {
   try {
     return await fn({...args})
   } catch (error) {
@@ -7,7 +7,6 @@ const catcher = (fn) => async (...args) => {
     return false
   }
 }
-
 
 module.exports = {
   catcher,

@@ -26,6 +26,7 @@ const create = async () => {
       -- user preferences
       dark_theme    BOOLEAN         default false,
       -- danger zone
+      active        BOOLEAN         default false,
       created_at    TIMESTAMP       not null default (now() at time zone 'UTC'),
       modified_at   TIMESTAMP       not null default (now() at time zone 'UTC')
     );

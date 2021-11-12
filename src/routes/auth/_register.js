@@ -1,4 +1,4 @@
-const { register } = require("../../database/queries/auth");
+const { auth } = require("../../database/queries/auth");
 const { hash } = require('../../helpers/index')
 const { mail } = require('../../configs/mailer')
 
@@ -13,9 +13,9 @@ module.exports = (db) => async (req, res, next) => {
   }
 
   // create user
-  const hashed = await hash.encrypt(password)
   const token = await hash.confirm_token()
-  const result = await register(db, { email, hashed, username, token });
+  const hashed = await hash.encrypt(password)
+  const result = await auth.register(db, { email, hashed, username, token });
   if (result === false) {
     return next({
       statusCode: 400,
@@ -25,9 +25,9 @@ module.exports = (db) => async (req, res, next) => {
   
   // send confirmation mail
   await mail.activationMail({ to: email, token })
-
+  
   res.status(200).json({
     succes: true,
-    data: "created",
+    data: "activation code sent",
   });
 };
