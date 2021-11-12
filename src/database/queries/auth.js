@@ -6,18 +6,24 @@ const searchByEmail = async (db, { email, username }) => {
   `);
 };
 
-const searchByToken = async (db, { token }) => {
+const searchByActivationToken = async (db, { token }) => {
   return await db.maybeOne(sql`
     SELECT * FROM users WHERE token_confirm = ${token} 
   `);
 };
 
+const searchByPasswordToken = async (db, { token, email }) => {
+  return await db.maybeOne(sql`
+    SELECT * FROM users WHERE token_reset = ${token} AND email = ${email}
+  `);
+};
+
 const register = async (db, { email, hashed, username, token }) => {
   try {
-    // confirm doesn't exist
+    //
     const result = await searchByEmail(db, { email, username });
     if (result) throw new Error("Username or Email taken");
-    // create user
+    //
     return await db.query(sql`
     INSERT INTO users ( email, username, hash, token_confirm ) 
     VALUES (${email}, ${username} , ${hashed}, ${token});
@@ -28,19 +34,19 @@ const register = async (db, { email, hashed, username, token }) => {
   }
 };
 
-const activate = async (db, { token }) => {
+const confirm = async (db, { token }) => {
   try {
-    // confirm does exist
-    const result = await searchByToken(db, { token });
+    //
+    const result = await searchByActivationToken(db, { token });
     if (!result) throw new Error("User not found by given token")
-    // activate account
+    //
     const update = await db.query(sql`
       UPDATE users
       SET active = true, token_confirm = null, modified_at = now()
       WHERE token_confirm = ${token};`)
     return result
   } catch (e) {
-    console.info("> error at 'activate' query: ", e.message);
+    console.info("> error at 'confirm' query: ", e.message);
     return false;
   }
 };
@@ -57,6 +63,18 @@ const forgot = async (db, { email, token }) => {
   }
 }
 
+const reset = async (db, { email, hashed }) => {
+  try {
+    return await db.query(sql`
+    UPDATE users
+    SET hash = ${hashed}, token_reset = null, modified_at = now()
+    WHERE email = ${email};`)
+  } catch (e) {
+    console.info("> error at 'reset' query: ", e.message);
+    return false;
+  }
+}
+
 module.exports = {
-  auth: { searchByEmail, register, activate, forgot },
+  auth: { searchByEmail, searchByPasswordToken, register, confirm, forgot, reset },
 };
