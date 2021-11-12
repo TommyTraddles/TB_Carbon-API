@@ -12,12 +12,12 @@ const encrypt = async password => {
 //   return await bcrypt.compare(password, hash)
 // }
 
-const confirm_token = () => {
+const create_token = () => {
   return crypto.randomBytes(64).toString('hex')
 }
 
 module.exports = {
   encrypt,
   // compare,
-  confirm_token,
+  create_token,
 }

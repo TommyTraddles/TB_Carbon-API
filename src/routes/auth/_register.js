@@ -13,7 +13,7 @@ module.exports = (db) => async (req, res, next) => {
   }
 
   // create user
-  const token = await hash.confirm_token()
+  const token = await hash.create_token()
   const hashed = await hash.encrypt(password)
   const result = await auth.register(db, { email, hashed, username, token });
   if (result === false) {

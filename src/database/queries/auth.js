@@ -17,7 +17,6 @@ const register = async (db, { email, hashed, username, token }) => {
     // confirm doesn't exist
     const result = await searchByEmail(db, { email, username });
     if (result) throw new Error("Username or Email taken");
-
     // create user
     return await db.query(sql`
     INSERT INTO users ( email, username, hash, token_confirm ) 
@@ -34,13 +33,11 @@ const activate = async (db, { token }) => {
     // confirm does exist
     const result = await searchByToken(db, { token });
     if (!result) throw new Error("User not found by given token")
-
     // activate account
     const update = await db.query(sql`
       UPDATE users
       SET active = true, token_confirm = null, modified_at = now()
-      WHERE token_confirm = ${token};
-    `)
+      WHERE token_confirm = ${token};`)
     return result
   } catch (e) {
     console.info("> error at 'activate' query: ", e.message);
@@ -48,6 +45,18 @@ const activate = async (db, { token }) => {
   }
 };
 
+const forgot = async (db, { email, token }) => {
+  try {
+    return await db.query(sql`
+    UPDATE users 
+    SET token_reset = ${token}, modified_at = now() 
+    WHERE email = ${email};`)
+  } catch (e) {
+    console.info("> error at 'forgot' query: ", e.message);
+    return false;
+  }
+}
+
 module.exports = {
-  auth: { register, activate },
+  auth: { searchByEmail, register, activate, forgot },
 };

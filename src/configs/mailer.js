@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { activation, confirmation } = require('../helpers/templates')
+const { activation, confirmation, forgotPass } = require('../helpers/templates')
 const { catcher } = require('../utils')
 
 const nodemailer = require("nodemailer");
@@ -21,6 +21,9 @@ const mail = {
   },
   confirmationMail: async ({ to, username }) => {
     await catcher(send)(confirmation({to, username}))
+  },
+  forgotMail: async ({ to, token }) => {
+    await catcher(send)(forgotPass({to, token}))
   },
 }
 

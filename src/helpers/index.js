@@ -1,5 +1,5 @@
-const { encrypt, compare, confirm_token } = require('./hash')
+const { encrypt, compare, create_token } = require('./hash')
 
 module.exports = {
-  hash: { encrypt, compare, confirm_token },
+  hash: { encrypt, compare, create_token },
 }

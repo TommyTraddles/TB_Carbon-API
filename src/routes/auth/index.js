@@ -2,8 +2,9 @@ const router = require('express').Router()
 
 module.exports = db => {
 
-  router.post(('/register'), require('./_register')(db))
+  router.post('/register', require('./_register')(db))
   router.get('/confirmation/:token', require('./_confirm')(db))
+  router.post('/forgot-pass', require('./_forgot-pass')(db))
 
   return router
 }
