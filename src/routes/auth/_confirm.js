@@ -4,11 +4,19 @@ const { mail } = require('../../configs/mailer')
 module.exports = (db) => async (req, res, next) => {
   const { token } = req.params
 
+  // all fields
+  if (!token ) {
+    return next({
+      succes: false, 
+      error: new Error("All fields are mandatory"),
+    });
+  }
+
   // activate user
-  const result = await auth.activate(db, {token})
+  const result = await auth.confirm(db, {token})
   if (result === false){
     return next({
-      statusCode: 400,
+      succes: false, 
       error: new Error ('token not assigned to any user')
     })
   }

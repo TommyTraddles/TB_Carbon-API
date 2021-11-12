@@ -8,17 +8,18 @@ module.exports = (db) => async (req, res, next) => {
   // all fields
   if (!email || !password || !username) {
     return next({
+      success: false,
       error: new Error("All fields are mandatory"),
     });
   }
-
+  
   // create user
   const token = await hash.create_token()
   const hashed = await hash.encrypt(password)
   const result = await auth.register(db, { email, hashed, username, token });
   if (result === false) {
     return next({
-      statusCode: 400,
+      success: false,
       error: new Error("Cannot create user"),
     });
   }
