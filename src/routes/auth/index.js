@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 module.exports = db => {
 
-  router.get(('/'), require('./_dummy')(db))
+  router.post(('/register'), require('./_register')(db))
 
   return router
 }

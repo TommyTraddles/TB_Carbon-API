@@ -1,9 +1,9 @@
 #### Carbon
 
-Cömo iniciar
+Cömo iniciar el servidor:
 
-```
-npm install (instalar dependencias)
-npm run dev (iniciar Server)
-npm run db:reset (pupulate BBDD dummy)
-```
+- `.env` actualizar
+- `npm install` (instalar dependencias)
+- `npm run dev` (iniciar Server)
+- `npm run db:reset` (pupulate BBDD dummy)
+
