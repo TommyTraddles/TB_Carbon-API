@@ -2,10 +2,12 @@ const { auth } = require('../../../database/queries/auth')
 const { hash, serialize } = require('../../../helpers')
 
 module.exports = (db) => async (req, res, next) => {
-  const { email, username, password } = req.body
+  const { email, password, username } = req.body
+
+  console.info(email, password)
 
   // all fields
-  if (!email || !password || !username) {
+  if (!email || !password ) {
     return next({
       success: false,
       error: new Error("All fields are mandatory"),
@@ -24,6 +26,8 @@ module.exports = (db) => async (req, res, next) => {
   // LS token // cookie
   const token = serialize(email)
   await auth.updateSessionToken(db, {token, email})
+
+  console.info(token)
 
   res.status(200).json({
     succes: true,
