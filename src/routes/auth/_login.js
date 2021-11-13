@@ -23,11 +23,10 @@ module.exports = (db) => async (req, res, next) => {
   
   // LS token // cookie
   const token = serialize(email)
-  console.info(token)
+  await auth.updateSessionToken(db, {token, email})
 
   res.status(200).json({
     succes: true,
     token,
-    result,
   });
 }

@@ -90,9 +90,23 @@ const login = async (db, { email, username }, fn) => {
   }
 };
 
+const updateSessionToken = async (db, {token, email }) => {
+  try {
+    return await db.query(sql`
+      UPDATE users
+      SET token_session = ${token}, modified_at = now()
+      WHERE email = ${email};
+    `)
+  } catch (e) {
+    console.info("> error at 'updateSessionToken' query: ", e.message);
+    return false;
+  }
+}
+
 module.exports = {
   auth: {
     searchByPasswordToken,
+    updateSessionToken,
     searchByEmail,
     register,
     confirm,
