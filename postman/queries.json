@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "0c68b269-f6be-4633-aafc-8c96775a5f58",
+		"name": "CARBON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ill.better.be.off@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "username2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "passwordo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/auth/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirmation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/auth/confirmation/TOKEN",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth",
+						"confirmation",
+						"TOKEN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgot-pass",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ill.better.be.off@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "username2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/auth/forgot-pass",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth",
+						"forgot-pass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset-pass",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "pass",
+							"value": "passwordiño",
+							"type": "text"
+						},
+						{
+							"key": "repeat",
+							"value": "passwordiño",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/auth/password/request?token=ae0bb58905002d19785a852500e770befaf353a471828dc55141bc894fc263e87baf1df43542143bfcee9eb649b1614ad83ee7e5b2a3fc8c5ae81af897625430&email=ill.better.be.off@gmail.com",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth",
+						"password",
+						"request"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "ae0bb58905002d19785a852500e770befaf353a471828dc55141bc894fc263e87baf1df43542143bfcee9eb649b1614ad83ee7e5b2a3fc8c5ae81af897625430"
+						},
+						{
+							"key": "email",
+							"value": "ill.better.be.off@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ill.better.be.off@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "username2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "passwordiño",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/auth/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "home",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/user/logout",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
