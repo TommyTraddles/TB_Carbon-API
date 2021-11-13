@@ -5,8 +5,8 @@ const serialize = (email) => {
   return toJWT(email)
 }
 
-const deserialize = () => {
-
+const deserialize = (token) => {
+  return fromJWT(token)
 }
 
 module.exports = {

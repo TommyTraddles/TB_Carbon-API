@@ -18,6 +18,12 @@ const searchByActivationToken = async (db, { token }) => {
   `);
 };
 
+const searchBySessionToken = async (db, { email, token }) => {
+  return await db.maybeOne(sql`
+    SELECT * FROM users WHERE email = ${email} AND token_session = ${token} 
+  `);
+};
+
 const searchByPasswordToken = async (db, { token, email }) => {
   return await db.maybeOne(sql`
     SELECT * FROM users WHERE token_reset = ${token} AND email = ${email}
@@ -103,9 +109,11 @@ const updateSessionToken = async (db, {token, email }) => {
   }
 }
 
+
 module.exports = {
   auth: {
     searchByPasswordToken,
+    searchBySessionToken,
     updateSessionToken,
     searchByEmail,
     register,
