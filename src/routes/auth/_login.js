@@ -1,5 +1,5 @@
 const { auth } = require('../../database/queries/auth')
-const { hash } = require('../../helpers')
+const { hash, serialize } = require('../../helpers')
 
 module.exports = (db) => async (req, res, next) => {
   const { email, username, password } = req.body
@@ -21,10 +21,13 @@ module.exports = (db) => async (req, res, next) => {
     })
   } 
   
-  // LS token
+  // LS token // cookie
+  const token = serialize(email)
+  console.info(token)
 
   res.status(200).json({
     succes: true,
-    data: result,
+    token,
+    result,
   });
 }
