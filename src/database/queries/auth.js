@@ -44,6 +44,20 @@ const register = async (db, { email, hashed, username, token }) => {
   }
 };
 
+const registerSSO = async (db, { email, hashed, username, active }) => {
+  try {
+    const result = await searchByEmail(db, { email, username });
+    if (result) throw new Error("Username or Email taken");
+    return await db.query(sql`
+      INSERT INTO users ( email, username, hash, active ) 
+      VALUES (${email}, ${username} , ${hashed}, ${active});
+    `);
+  } catch (e) {
+    console.info("> error at 'register' query: ", e.message);
+    return false;
+  }
+};
+
 const confirm = async (db, { token }) => {
   try {
     const result = await searchByActivationToken(db, { token });
@@ -115,6 +129,7 @@ module.exports = {
     searchByPasswordToken,
     searchBySessionToken,
     updateSessionToken,
+    registerSSO,
     searchByEmail,
     register,
     confirm,
