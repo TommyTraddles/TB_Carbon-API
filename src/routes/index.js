@@ -3,8 +3,8 @@ const { guard } = require('../middlewares/guard')
 
 module.exports = (db) => {
   
-  router.use('/auth', require('./auth')(db))
-  router.use('/', guard, require('./app')(db))
+  router.use('/', require('./public')(db))
+  router.use('/', guard, require('./private')(db))
 
   return router
 }

@@ -1,5 +1,5 @@
-const { auth } = require("../../database/queries/auth");
-const { mail } = require('../../configs/mailer')
+const { auth } = require("../../../database/queries/auth");
+const { mail } = require('../../../configs/mailer')
 
 module.exports = (db) => async (req, res, next) => {
   const { token } = req.params

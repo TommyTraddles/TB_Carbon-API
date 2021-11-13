@@ -1,6 +1,6 @@
-const { auth } = require("../../database/queries/auth");
-const { hash } = require("../../helpers");
-const { mail } = require("../../configs/mailer");
+const { auth } = require("../../../database/queries/auth");
+const { hash } = require("../../../helpers");
+const { mail } = require("../../../configs/mailer");
 
 module.exports = (db) => async (req, res, next) => {
   const { email, username } = req.body;
