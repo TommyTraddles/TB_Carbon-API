@@ -11,4 +11,6 @@ Cömo iniciar el servidor:
 <!-- 
 https://ezmap.co/
 
+- autenticación: JWT
+
  -->
