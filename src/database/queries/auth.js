@@ -1,8 +1,14 @@
 const { sql } = require("slonik");
 
-const searchByEmail = async (db, { email, username }) => {
+const searchByEmail = async (db, { email }) => {
   return await db.maybeOne(sql`
-    SELECT * FROM users WHERE email = ${email} OR username = ${username}
+    SELECT * FROM users WHERE email = ${email}
+  `);
+};
+
+const searchByUsername = async (db, { username }) => {
+  return await db.maybeOne(sql`
+    SELECT * FROM users WHERE username = ${username}
   `);
 };
 
@@ -97,10 +103,10 @@ const reset = async (db, { email, hashed }) => {
   }
 };
 
-const login = async (db, { email, username }, fn) => {
+const login = async (db, { email }, fn) => {
   try {
-    const result = await searchByEmailAndUser(db, { email, username });
-    if (!result) throw new Error("Password or User are incorrect");
+    const result = await searchByEmail(db, { email });
+    if (!result) throw new Error("Password or Email are incorrect");
     const validPass = await fn(result.hash);
     if (!validPass) throw new Error("Invalid password");
     return result;

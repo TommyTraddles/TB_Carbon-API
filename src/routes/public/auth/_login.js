@@ -2,7 +2,7 @@ const { auth } = require('../../../database/queries/auth')
 const { hash, serialize } = require('../../../helpers')
 
 module.exports = (db) => async (req, res, next) => {
-  const { email, password, username } = req.body
+  const { email, password } = req.body
 
   console.info(email, password)
 
@@ -15,7 +15,7 @@ module.exports = (db) => async (req, res, next) => {
   }
 
   // auth user
-  const result = await auth.login(db, {email, username}, hash.compare(password) )
+  const result = await auth.login(db, {email }, hash.compare(password) )
   if(result === false){
     return next({
       success: false,
@@ -30,7 +30,7 @@ module.exports = (db) => async (req, res, next) => {
   console.info(token)
 
   res.status(200).json({
-    succes: true,
+    success: true,
     token,
   });
 }
