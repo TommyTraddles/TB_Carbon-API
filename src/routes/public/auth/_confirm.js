@@ -7,7 +7,7 @@ module.exports = (db) => async (req, res, next) => {
   // all fields
   if (!token ) {
     return next({
-      succes: false, 
+      success: false, 
       error: new Error("All fields are mandatory"),
     });
   }
@@ -16,7 +16,7 @@ module.exports = (db) => async (req, res, next) => {
   const result = await auth.confirm(db, {token})
   if (result === false){
     return next({
-      succes: false, 
+      success: false, 
       error: new Error ('token not assigned to any user')
     })
   }
@@ -25,7 +25,7 @@ module.exports = (db) => async (req, res, next) => {
   await mail.confirmationMail({ to: result.email, username: result.username})
 
   res.status(200).json({
-    succes: true,
+    success: true,
     data: "user activated",
   });
 }

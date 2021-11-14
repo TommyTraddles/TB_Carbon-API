@@ -6,7 +6,7 @@ module.exports = (db) => async (req, res, next) => {
   await auth.updateSessionToken(db, { token: null, email: user.email })
 
   res.status(200).json({
-    succes: true,
+    success: true,
     data: "Logout",
   });
 }

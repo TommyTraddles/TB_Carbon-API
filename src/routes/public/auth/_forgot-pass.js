@@ -8,7 +8,7 @@ module.exports = (db) => async (req, res, next) => {
   // all fields
   if (!email || !username) {
     return next({
-      succes: false, 
+      success: false, 
       error: new Error("All fields are mandatory"),
     });
   }
@@ -17,7 +17,7 @@ module.exports = (db) => async (req, res, next) => {
   const result = await auth.searchByEmail(db, { email, username });
   if (!result) {
     return next({
-      succes: false, 
+      success: false, 
       error: new Error("Something went wrong"),
     });
   }
@@ -28,7 +28,7 @@ module.exports = (db) => async (req, res, next) => {
   await mail.forgotMail({ to: email, token });
 
   res.status(200).json({
-    succes: true,
+    success: true,
     data: "email sent",
   });
 };

@@ -10,7 +10,7 @@ module.exports = (db) => async (req, res, next) => {
   await auth.updateSessionToken(db, { token, email });
 
   res.status(200).json({
-    succes: true,
+    success: true,
     token,
   });
 };

@@ -27,7 +27,7 @@ module.exports = (db) => async(req, res, next) => {
   const query = await auth.reset(db, { email, hashed })
 
   res.status(200).json({
-    succes: true,
+    success: true,
     data: "new password setup",
   });
 }
