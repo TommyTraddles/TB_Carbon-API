@@ -19,8 +19,9 @@ module.exports = (db) => async (req, res, next) => {
   const result = await auth.register(db, { email, hashed, username, token });
   if (result === false) {
     return next({
+      statusCode: 400,
       success: false,
-      error: new Error("Cannot create user"),
+      error: new Error("Email or Username taken"),
     });
   }
   
@@ -28,7 +29,7 @@ module.exports = (db) => async (req, res, next) => {
   await mail.activationMail({ to: email, token })
   
   res.status(200).json({
-    succes: true,
+    success: true,
     data: "activation code sent",
   });
 };
