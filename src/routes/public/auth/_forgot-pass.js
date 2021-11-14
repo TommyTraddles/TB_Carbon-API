@@ -3,10 +3,10 @@ const { hash } = require("../../../helpers");
 const { mail } = require("../../../configs/mailer");
 
 module.exports = (db) => async (req, res, next) => {
-  const { email, username } = req.body;
+  const { email } = req.body;
 
   // all fields
-  if (!email || !username) {
+  if (!email) {
     return next({
       success: false, 
       error: new Error("All fields are mandatory"),
@@ -14,13 +14,13 @@ module.exports = (db) => async (req, res, next) => {
   }
 
   // retrieve user
-  const result = await auth.searchByEmail(db, { email, username });
-  if (!result) {
-    return next({
-      success: false, 
-      error: new Error("Something went wrong"),
-    });
-  }
+  const result = await auth.searchByEmail(db, { email });
+  // if (!result) {
+  //   return next({
+  //     success: false, 
+  //     error: new Error("Something went wrong"),
+  //   });
+  // }
 
   // create reset token
   const token = await hash.create_token();
