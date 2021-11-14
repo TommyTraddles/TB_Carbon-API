@@ -18,6 +18,7 @@ const create = async () => {
       email         VARCHAR(50)     unique not null,
       hash          TEXT            not null,
       username      VARCHAR(50)     unique,
+      name          VARCHAR(50)     ,
       zipcode       VARCHAR(50)     ,
       -- tokens
       token_reset   TEXT            ,

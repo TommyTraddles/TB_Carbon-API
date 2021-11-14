@@ -14,10 +14,10 @@ passport.use( new GoogleStrategy({
   async ( req, accessToken, refreshToken, profile, done) => {
     const { email, name } = profile._json
     const hashed = await hash.encrypt(hash.create_token())
-    const user = await auth.searchByEmail(db, { email, username: null })
+    const user = await auth.searchByEmail(db, { email })
     if (user)return done(null, profile)
     if (!user){
-      await auth.registerSSO(db, { email, hashed, username: name, active: true })
+      await auth.registerSSO(db, { email, hashed, name, active: true })
       return done(null, profile)
     }
   }

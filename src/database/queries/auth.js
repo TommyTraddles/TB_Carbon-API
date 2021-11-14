@@ -6,17 +6,11 @@ const searchByEmail = async (db, { email }) => {
   `);
 };
 
-const searchByUsername = async (db, { username }) => {
-  return await db.maybeOne(sql`
-    SELECT * FROM users WHERE username = ${username}
-  `);
-};
-
-const searchByEmailAndUser = async (db, { email, username }) => {
-  return await db.maybeOne(sql`
-    SELECT * FROM users WHERE email = ${email} AND username = ${username}
-  `);
-};
+// const searchByUsername = async (db, { username }) => {
+//   return await db.maybeOne(sql`
+//     SELECT * FROM users WHERE username = ${username}
+//   `);
+// };
 
 const searchByActivationToken = async (db, { token }) => {
   return await db.maybeOne(sql`
@@ -36,13 +30,13 @@ const searchByPasswordToken = async (db, { token, email }) => {
   `);
 };
 
-const register = async (db, { email, hashed, username, token }) => {
+const register = async (db, { email, hashed, token }) => {
   try {
-    const result = await searchByEmail(db, { email, username });
-    if (result) throw new Error("Username or Email taken");
+    const result = await searchByEmail(db, { email });
+    if (result) throw new Error("Email taken");
     return await db.query(sql`
-      INSERT INTO users ( email, username, hash, token_confirm ) 
-      VALUES (${email}, ${username} , ${hashed}, ${token});
+      INSERT INTO users ( email, hash, token_confirm ) 
+      VALUES (${email}, ${hashed}, ${token});
     `);
   } catch (e) {
     console.info("> error at 'register' query: ", e.message);
@@ -50,13 +44,13 @@ const register = async (db, { email, hashed, username, token }) => {
   }
 };
 
-const registerSSO = async (db, { email, hashed, username, active }) => {
+const registerSSO = async (db, { email, hashed, name, active }) => {
   try {
-    const result = await searchByEmail(db, { email, username });
-    if (result) throw new Error("Username or Email taken");
+    const result = await searchByEmail(db, { email });
+    if (result) throw new Error("Email taken");
     return await db.query(sql`
-      INSERT INTO users ( email, username, hash, active ) 
-      VALUES (${email}, ${username} , ${hashed}, ${active});
+      INSERT INTO users ( email, name, hash, active ) 
+      VALUES (${email}, ${name} , ${hashed}, ${active});
     `);
   } catch (e) {
     console.info("> error at 'register' query: ", e.message);

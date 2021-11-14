@@ -3,10 +3,10 @@ const { hash } = require('../../../helpers/index')
 const { mail } = require('../../../configs/mailer')
 
 module.exports = (db) => async (req, res, next) => {
-  const { email, password, username } = req.body;
+  const { email, password  } = req.body;
 
   // all fields
-  if (!email || !password || !username) {
+  if (!email || !password) {
     return next({
       success: false,
       error: new Error("All fields are mandatory"),
@@ -16,12 +16,12 @@ module.exports = (db) => async (req, res, next) => {
   // create user
   const token = await hash.create_token()
   const hashed = await hash.encrypt(password)
-  const result = await auth.register(db, { email, hashed, username, token });
+  const result = await auth.register(db, { email, hashed, token });
   if (result === false) {
     return next({
       statusCode: 400,
       success: false,
-      error: new Error("Email or Username taken"),
+      error: new Error("Email taken"),
     });
   }
   
