@@ -8,6 +8,8 @@ module.exports = db => {
   router.post('/forgot-pass', require('./_forgot-pass')(db))
   router.post('/password/request', require('./_reset-pass')(db))
   router.post('/login', require('./_login')(db))
+  // others
+  router.post('/calculator', require('./_calculator')(db))
   // sso
   router.use( passport.initialize());
   router.get('/google', passport.authenticate('google', { scope: ['email', 'profile']}))
