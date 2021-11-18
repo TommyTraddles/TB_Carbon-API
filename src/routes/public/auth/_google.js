@@ -3,14 +3,9 @@ const { serialize } = require('../../../helpers')
 
 module.exports = (db) => async (req, res, next) => {
 
-  console.info('> Not working ')
+  res.redirect(process.env.CLIENT_URL)
 
-  // LS token // cookie
-  const token = serialize(email);
-  await auth.updateSessionToken(db, { token, email });
-
-  res.status(200).json({
-    success: true,
-    token,
-  });
+  // res.status(200).json({
+  //   success: true,
+  // })
 };

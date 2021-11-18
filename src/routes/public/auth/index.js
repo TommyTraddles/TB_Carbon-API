@@ -11,7 +11,6 @@ module.exports = db => {
   // sso
   router.use( passport.initialize());
   router.get('/google', passport.authenticate('google', { scope: ['email', 'profile']}))
-  // doesn't upload session_token on Header or DB // serialize conflict ?
   router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), require('./_google')(db))
 
   return router
