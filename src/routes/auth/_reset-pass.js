@@ -1,5 +1,5 @@
-const { auth } = require('../../../database/queries/auth')
-const { hash } = require('../../../helpers')
+const { auth } = require('../../database/queries/auth')
+const { hash } = require('../../helpers')
 
 module.exports = (db) => async(req, res, next) => {
   const { token, email } = req.query

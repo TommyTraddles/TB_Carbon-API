@@ -3,20 +3,10 @@ const { guard } = require('../middlewares/guard')
 
 module.exports = (db) => {
   
-  router.use('/auth', require('./public')(db))
-  router.use('/', guard, require('./private')(db))
+  router.use('/', require('./calculator')(db))
+  router.use('/auth', require('./auth')(db))
+  router.use('/ranking', require('./ranking')(db))
+  router.use('/user', require('./user')(db))
 
   return router
 }
-
-
-/*
-
-Cambiar: privado por público
-
-Auth
-App
-User
-
-*/
-

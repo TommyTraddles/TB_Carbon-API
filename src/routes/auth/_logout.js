@@ -1,4 +1,4 @@
-const { auth } = require('../../../database/queries/auth')
+const { auth } = require('../../database/queries/auth')
 
 module.exports = (db) => async (req, res, next) => {
 

@@ -1,5 +1,5 @@
-const { auth } = require("../../../database/queries/auth");
-const { serialize } = require('../../../helpers')
+const { auth } = require("../../database/queries/auth");
+const { serialize } = require('../../helpers')
 
 module.exports = (db) => async (req, res, next) => {
 
