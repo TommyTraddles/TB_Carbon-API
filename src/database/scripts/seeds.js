@@ -9,10 +9,10 @@ const insert = async () => {
     // users
     await tx.query(sql`
     INSERT INTO users
-        ( email, username, hash, token_confirm ) 
+        ( email, hash, token_confirm ) 
       VALUES 
-        ('email', 'username', 'hash', 'token'),
-        ('email1', 'username1', 'hash', 'token');
+        ('email', 'hash', 'token'),
+        ('email1', 'hash', 'token');
     `)
     console.info('> seeds done! 🚀')
   

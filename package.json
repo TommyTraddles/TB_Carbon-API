@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db:drop": "node src/helpers/scripts/drops.js",
-    "db:create": "node src/helpers/scripts/creation.js",
-    "db:seeds": "node src/helpers/scripts/seeds.js",
+    "db:drop": "node src/database/scripts/drops.js",
+    "db:create": "node src/database/scripts/creation.js",
+    "db:seeds": "node src/database/scripts/seeds.js",
     "db:reset": "npm run db:drop && npm run db:create && npm run db:seeds",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
@@ -24,12 +24,13 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "multer": "^1.4.3",
+    "nodemailer": "^6.7.0",
     "nodemon": "^2.0.12",
-    "slonik": "^24.1.0",
-    "morgan": "^1.10.0"
+    "passport": "^0.5.0",
+    "passport-google-oauth20": "^2.0.0",
+    "slonik": "^24.1.0"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }

@@ -18,6 +18,7 @@ const create = async () => {
       email         VARCHAR(50)     unique not null,
       hash          TEXT            not null,
       username      VARCHAR(50)     unique,
+      name          VARCHAR(50)     ,
       zipcode       VARCHAR(50)     ,
       -- tokens
       token_reset   TEXT            ,
@@ -26,6 +27,7 @@ const create = async () => {
       -- user preferences
       dark_theme    BOOLEAN         default false,
       -- danger zone
+      active        BOOLEAN         default false,
       created_at    TIMESTAMP       not null default (now() at time zone 'UTC'),
       modified_at   TIMESTAMP       not null default (now() at time zone 'UTC')
     );
