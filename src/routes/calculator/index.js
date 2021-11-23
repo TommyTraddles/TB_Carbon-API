@@ -12,7 +12,7 @@ module.exports = db => {
   router.get('/get-actions/:vertical', require('./_get-actions')(db))
   router.post('/update-actions', require('./_update-actions')(db))
   // logros
-
+  router.get('/get-logros', require('./_get-logros')(db))
   // dairy
 
   return router
