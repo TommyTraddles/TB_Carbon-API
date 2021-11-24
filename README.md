@@ -1,8 +1,8 @@
-#### Carbon
+#### Carbon-API
 
-Cömo iniciar el servidor:
+Iniciar el proyecto
 
-- `.env` actualizar
+- `.env` base de `.env-sample`
 - `npm install` (instalar dependencias)
 - `npm run dev` (iniciar Server)
 - `npm run db:reset` (pupulate BBDD dummy)
