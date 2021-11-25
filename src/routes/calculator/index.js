@@ -9,10 +9,10 @@ module.exports = db => {
   router.get('/get-daily-completed', require('./_get-daily-completed')(db))
   router.get('/get-daily', require('./_get-daily')(db))
   // actions
-  router.get('/get-actions/:vertical', require('./_get-actions')(db))
-  router.post('/update-actions', require('./_update-actions')(db))
+  router.get('/get-actions/:vertical', guard, require('./_get-actions')(db))
+  router.post('/update-actions', guard, require('./_update-actions')(db))
   // logros
-  router.get('/get-logros', require('./_get-logros')(db))
+  router.get('/get-logros', guard, require('./_get-logros')(db))
   // dairy
 
   return router

@@ -4,8 +4,6 @@ const { hash, serialize } = require('../../helpers')
 module.exports = (db) => async (req, res, next) => {
   const { email, password } = req.body
 
-  console.info(email, password)
-
   // all fields
   if (!email || !password ) {
     return next({
@@ -23,11 +21,9 @@ module.exports = (db) => async (req, res, next) => {
     })
   } 
   
-  // LS token // cookie
+  // serialize token to send
   const token = serialize(email)
   await auth.updateSessionToken(db, {token, email})
-
-  console.info(token)
 
   res.status(200).json({
     success: true,

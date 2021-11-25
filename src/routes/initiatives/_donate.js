@@ -2,9 +2,7 @@ const Stripe = require("stripe");
 
 module.exports = (db) => async (req, res, next) => {
   // all data
-  const { user } = res.locals;
-  // ❌ retrieve email by user.locals
-  const email = "ill.better.be.off@gmail.com";
+  const { email } = res.locals;
   const { id, amount, payment } = req.body;
 
   // ❌ retrieve intiative by ID

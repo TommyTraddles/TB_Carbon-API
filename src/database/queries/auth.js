@@ -2,15 +2,15 @@ const { sql } = require("slonik");
 
 const searchByEmail = async (db, { email }) => {
   return await db.maybeOne(sql`
-    SELECT * FROM users WHERE email = ${email}
+  SELECT * FROM users WHERE email = ${email}
   `);
 };
 
-// const searchByUsername = async (db, { username }) => {
-//   return await db.maybeOne(sql`
-//     SELECT * FROM users WHERE username = ${username}
-//   `);
-// };
+const searchByToken = async (db, { token }) => {
+  return await db.maybeOne(sql`
+      SELECT * FROM users WHERE token_session = ${token}
+    `);
+};
 
 const searchByActivationToken = async (db, { token }) => {
   return await db.maybeOne(sql`
@@ -110,27 +110,27 @@ const login = async (db, { email }, fn) => {
   }
 };
 
-const updateSessionToken = async (db, {token, email }) => {
+const updateSessionToken = async (db, { token, email }) => {
   try {
     return await db.query(sql`
       UPDATE users
       SET token_session = ${token}, modified_at = now()
       WHERE email = ${email};
-    `)
+    `);
   } catch (e) {
     console.info("> error at 'updateSessionToken' query: ", e.message);
     return false;
   }
-}
-
+};
 
 module.exports = {
   auth: {
     searchByPasswordToken,
     searchBySessionToken,
     updateSessionToken,
-    registerSSO,
+    searchByToken,
     searchByEmail,
+    registerSSO,
     register,
     confirm,
     forgot,

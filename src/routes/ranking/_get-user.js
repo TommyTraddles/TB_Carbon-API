@@ -1,6 +1,6 @@
 module.exports = (db) => async (req, res, next) => {
 
-  const { user } = res.locals
+  const { email } = res.locals
 
   const { id } = req.params
 

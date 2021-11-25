@@ -1,6 +1,6 @@
 module.exports = (db) => async (req, res, next) => {
 
-  const { user } = res.locals
+  const { email } = res.locals
 
   const result = [
     { id: 1, ranking: 1, username: 'borja', zipcode: 28027, footprint: 150, },

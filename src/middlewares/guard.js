@@ -4,8 +4,6 @@ const db = require('../configs/db')
 
 const guard = async (req, res, next) => {
 
-  console.info('> RES.LOCALS: ', res.locals)
-
   /*
    * condicional para los token de google ?
    * req.headers.google ? 
@@ -45,7 +43,7 @@ const guard = async (req, res, next) => {
     })
   }
   
-  res.locals.user = user
+  res.locals.email = result.email
   next()
 }
 

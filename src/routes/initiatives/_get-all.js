@@ -1,6 +1,6 @@
 module.exports = (db) => async (req, res, next) => {
 
-  const { user } = res.locals
+  const { email } = res.locals
 
   const result = [
     { id: 1,  name: "Reforestar en España", organization: 'ONG reforesta', contact:'email@email.com', description:'Lorem ipsum dolor sit amet', url: '', },
