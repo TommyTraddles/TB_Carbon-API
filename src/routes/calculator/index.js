@@ -5,7 +5,7 @@ module.exports = db => {
 
   // calculator
   router.post('/calculator', require('./_calculator')(db))
-  router.get('/get-accumulated', require('./_get-accumulated')(db))
+  router.get('/get-accumulated', guard, require('./_get-accumulated')(db))
   router.get('/get-daily-completed', guard, require('./_get-daily-completed')(db))
   router.get('/get-daily/:vertical', guard, require('./_get-daily')(db))
   // actions

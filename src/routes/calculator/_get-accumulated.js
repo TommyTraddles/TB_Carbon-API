@@ -1,11 +1,12 @@
 module.exports = (db) => async (req, res, next) => {
 
   const { email } = res.locals
+  console.info('> ACCUMULATED: ', email)
 
   const result = [
     {
       date: 'Enero',
-      electricidad: 40,
+      electricidad: 80,
       transporte: 24,
       alimentación: 24,
       consumo: 24,
