@@ -43,9 +43,7 @@ const guard = async (req, res, next) => {
     })
   }
   
-  console.info('> RESULT.EMAIL: ', result.email)
   res.locals.email = result.email
-  console.info('> RES.LOCALS.EMAIL: ', res.locals.email)
   next()
 }
 

@@ -1,6 +1,7 @@
 module.exports = (db) => async (req, res, next) => {
 
   const { email } = res.locals
+  const { vertical } = req.params
 
   const color = {
     violet: '#8884d8',
