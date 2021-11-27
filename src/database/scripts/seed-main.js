@@ -9,7 +9,6 @@ const insert = async () => {
     // users
     await tx.query(sql`
 
-
 INSERT INTO users 
     (email, hash, token_confirm ) 
   VALUES
