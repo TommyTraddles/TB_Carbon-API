@@ -2,7 +2,7 @@ module.exports = (db) => async (req, res, next) => {
 
   const { email } = res.locals
 
-  const result = true
+  const result = false
 
   // 
   res.status(200).json({

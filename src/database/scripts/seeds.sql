@@ -139,13 +139,19 @@ INSERT INTO deportes
     ('indoor', '63'),
     ('gimnasio', '89');
 
+INSERT INTO DIRECCIONES 
+        (cod_postal, Municipio, Provincia, latitud, longitud)
+    VALUES
+        ('240', 'Alegría-Dulantzi', 'Araba/Álava', -2.712437310, 42.939811580),
+        ('1193', 'Alegría-Dulantzi', 'Araba/Álava', -2.712437310, 42.939811580);
+
 INSERT INTO INICIATIVAS 
     (Nombre, Descripcion_corta, Descripcion_larga, Cod_postal, Correo_electronico, HC_red_base) 
   VALUES
-    ('Reforestar en España', 'Ong Reforesta', 'ONG creada en 1991 para la conservación de la naturaleza, declarada de Utilidad Pública. Jornadas de voluntariado con particulares y empresas. Trabajamos por los bosques.', '59887', 'info@reforesta.es', '25'),
-    ('Lucha contra el cambio climático', 'Ong WWF', 'Ong WWF', '32566', 'info@wwf.es', '25'),
-    ('Energía renovable 100%', 'Ong Energética', 'Ong Energética', '29934', 'info@energetica.coop', '25'),
-    ('Limpiar los océanos de plástico', 'Ong Ocean cleanup', 'Ong Ocean cleanup', '38822', 'info@oceancleanup.com', '25');
+    ('Reforestar en España', 'Ong Reforesta', 'ONG creada en 1991 para la conservación de la naturaleza, declarada de Utilidad Pública. Jornadas de voluntariado con particulares y empresas. Trabajamos por los bosques.', '1193', 'info@reforesta.es', '25'),
+    ('Lucha contra el cambio climático', 'Ong WWF', 'Ong WWF', '240', 'info@wwf.es', '25'),
+    ('Energía renovable 100%', 'Ong Energética', 'Ong Energética', '1193', 'info@energetica.coop', '25'),
+    ('Limpiar los océanos de plástico', 'Ong Ocean cleanup', 'Ong Ocean cleanup', '240', 'info@oceancleanup.com', '25');
 
 INSERT INTO LOGROS 
     (Icono, Logro, Vertical) 

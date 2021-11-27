@@ -74,9 +74,9 @@ const create = async () => {
         cod_postal                                     CHAR(5)         PRIMARY KEY,
         Municipio                                      VARCHAR(100)     NOT NULL,
         Provincia                                      VARCHAR(100)     NOT NULL,
-        Comunidad_autonoma                             VARCHAR(100)     NOT NULL,
-        latitud                                        INTEGER         NOT NULL,
-        longitud                                       INTEGER         NOT NULL
+        Comunidad_autonoma                             VARCHAR(100)    ,
+        latitud                                        DECIMAL         NOT NULL,
+        longitud                                       DECIMAL         NOT NULL
         );
     
     CREATE TABLE LOGROS (

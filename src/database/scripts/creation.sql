@@ -4,18 +4,17 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE users (
-      id                                           uuid            PRIMARY KEY default uuid_generate_v4(),
-      email                                        VARCHAR(50)     unique not null,
-      hash                                         TEXT            not null,
-      username                                     VARCHAR(50)     unique,
-      token_reset                                  TEXT            ,
-      token_confirm                                TEXT            ,
-      token_session                                TEXT            ,
-      active                                       BOOLEAN         default false,
-      created_at                                   TIMESTAMP       not null default (now() at time zone 'UTC'),
-      modified_at                                  TIMESTAMP       not null default (now() at time zone 'UTC')
+    id                                           uuid            PRIMARY KEY default uuid_generate_v4(),
+    email                                        VARCHAR(50)     unique not null,
+    hash                                         TEXT            not null,
+    username                                     VARCHAR(50)     unique,
+    token_reset                                  TEXT            ,
+    token_confirm                                TEXT            ,
+    token_session                                TEXT            ,
+    active                                       BOOLEAN         default false,
+    created_at                                   TIMESTAMP       not null default (now() at time zone 'UTC'),
+    modified_at                                  TIMESTAMP       not null default (now() at time zone 'UTC')
     );
-
 CREATE TABLE USUARIOS (
 	ID_usuario                                     uuid            PRIMARY KEY default uuid_generate_v4(),
 	Nombre                                         VARCHAR(50)     NOT NULL,
@@ -62,11 +61,11 @@ CREATE TABLE ACTIVIDADES_REDUCCION (
 
 CREATE TABLE DIRECCIONES (
     cod_postal                                     CHAR(5)         PRIMARY KEY,
-    Municipio                                      VARCHAR(100)     NOT NULL,
-    Provincia                                      VARCHAR(100)     NOT NULL,
-    Comunidad_autonoma                             VARCHAR(100)     NOT NULL,
-    latitud                                        INTEGER         NOT NULL,
-    longitud                                       INTEGER         NOT NULL
+    Municipio                                      VARCHAR(100)    NOT NULL,
+    Provincia                                      VARCHAR(100)    NOT NULL,
+    Comunidad_autonoma                             VARCHAR(100)    ,
+    latitud                                        DECIMAL         NOT NULL,
+    longitud                                       DECIMAL         NOT NULL
     );
 
 CREATE TABLE LOGROS (
