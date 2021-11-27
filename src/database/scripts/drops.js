@@ -5,7 +5,7 @@ const drop = async () => {
   try {
 
     await db.query(sql`
-    -- DROP DATABASE IF EXISTS eCO2db;
+      -- DROP DATABASE IF EXISTS eCO2db;
       DROP EXTENSION IF EXISTS "uuid-ossp" CASCADE;
       DROP TABLE IF EXISTS users CASCADE;
       DROP TABLE IF EXISTS USUARIOS CASCADE;
