@@ -10,7 +10,7 @@
     "db:insert2": "node src/database/scripts/seeds.js",
     "db:delete": "node src/database/scripts/deletes.js",
     "db:reset": "npm run db:drop && npm run db:create",
-    "db:seeds": "npm run db:insert2 && npm run db:insert1",
+    "db:seeds": "npm run db:insert1 && npm run db:insert2",
     "db:go": "npm run db:reset && npm run db:seeds",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",

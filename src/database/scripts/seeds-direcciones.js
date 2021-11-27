@@ -9,11 +9,11 @@ const insert = async () => {
     // users
     await tx.query(sql`
 
-INSERT INTO DIRECCIONES 
-    (cod_postal, Municipio, Provincia, latitud, longitud)
-VALUES
-    ('240', 'Alegría-Dulantzi', 'Araba/Álava', -2.712437310, 42.939811580),
-    ('1193', 'Alegría-Dulantzi', 'Araba/Álava', -2.712437310, 42.939811580);
+    INSERT INTO DIRECCIONES 
+        (Provincia, Municipio, cod_postal, latitud, longitud)
+    VALUES
+        ('Araba/Álava', 'Alegría-Dulantzi', '240', '-2.71243731', '42.93981158'),
+        ('Araba/Álava', 'Alegría-Dulantzi', '1193', '-2.71243731', '42.93981158');
 
     `)
     console.info('> seeds-direcciones done! 🚀')

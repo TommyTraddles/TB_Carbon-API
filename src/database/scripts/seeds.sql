@@ -139,11 +139,6 @@ INSERT INTO deportes
     ('indoor', '63'),
     ('gimnasio', '89');
 
-INSERT INTO DIRECCIONES 
-        (cod_postal, Municipio, Provincia, latitud, longitud)
-    VALUES
-        ('240', 'Alegría-Dulantzi', 'Araba/Álava', -2.712437310, 42.939811580),
-        ('1193', 'Alegría-Dulantzi', 'Araba/Álava', -2.712437310, 42.939811580);
 
 INSERT INTO INICIATIVAS 
     (Nombre, Descripcion_corta, Descripcion_larga, Cod_postal, Correo_electronico, HC_red_base) 
