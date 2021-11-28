@@ -109,7 +109,7 @@ CREATE TABLE Donaciones (
     ID_usuario                                    uuid            NOT NULL default uuid_generate_v4(),
     ID_iniciativa                                 uuid            NOT NULL default uuid_generate_v4(),
     HCarbono_asignada                             INTEGER         NOT NULL,
-    Descripcion_detallada                         VARCHAR(1000)   NOT NULL
+    Descripcion_detallada                         VARCHAR(1000)   ,
     );
 
 CREATE TABLE Compromisos_diarios (
