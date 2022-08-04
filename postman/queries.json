@@ -1,8 +1,10 @@
 {
 	"info": {
 		"_postman_id": "0c68b269-f6be-4633-aafc-8c96775a5f58",
-		"name": "CARBON",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "CARBON API",
+		"description": "An app to track the Carbon Footprint of a user and give them ideas on how to reduce it, based on collaborations with companies.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16463884"
 	},
 	"item": [
 		{
@@ -15,17 +17,12 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "ill.better.be.off@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "username2",
+							"value": "{{email}}",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "passwordiño",
+							"value": "PASSWORD",
 							"type": "text"
 						}
 					]
@@ -40,7 +37,8 @@
 						"auth",
 						"login"
 					]
-				}
+				},
+				"description": "Returns a `session_token` if the credentials correspond to the ones saved on the database."
 			},
 			"response": []
 		},
@@ -54,19 +52,13 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "ill.better.be.off@gmail.com",
+							"value": "{{email}}",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "passwordo",
+							"value": "PASSWORD",
 							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "username2",
-							"type": "text",
-							"disabled": true
 						}
 					]
 				},
@@ -80,7 +72,8 @@
 						"auth",
 						"register"
 					]
-				}
+				},
+				"description": "Stores the user credentials on the database and sends the `activation_token` code to the mail."
 			},
 			"response": []
 		},
@@ -107,7 +100,8 @@
 						"confirmation",
 						"TOKEN"
 					]
-				}
+				},
+				"description": "Activates the user on the database and sends a confirmation mail."
 			},
 			"response": []
 		},
@@ -123,11 +117,6 @@
 							"key": "email",
 							"value": "ill.better.be.off@gmail.com",
 							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "username2",
-							"type": "text"
 						}
 					]
 				},
@@ -141,7 +130,8 @@
 						"auth",
 						"forgot-pass"
 					]
-				}
+				},
+				"description": "Sends a `temporal_token` to the given email."
 			},
 			"response": []
 		},
@@ -155,18 +145,18 @@
 					"urlencoded": [
 						{
 							"key": "pass",
-							"value": "passwordiño",
+							"value": "NEW_PASSWORD",
 							"type": "text"
 						},
 						{
 							"key": "repeat",
-							"value": "passwordiño",
+							"value": "NEW_PASSWORD",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}:{{port}}/auth/password/request?token=ae0bb58905002d19785a852500e770befaf353a471828dc55141bc894fc263e87baf1df43542143bfcee9eb649b1614ad83ee7e5b2a3fc8c5ae81af897625430&email=ill.better.be.off@gmail.com",
+					"raw": "{{base_url}}:{{port}}/auth/password/request?token=TOKEN&email=EMAIL",
 					"host": [
 						"{{base_url}}"
 					],
@@ -179,50 +169,15 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "ae0bb58905002d19785a852500e770befaf353a471828dc55141bc894fc263e87baf1df43542143bfcee9eb649b1614ad83ee7e5b2a3fc8c5ae81af897625430"
+							"value": "TOKEN"
 						},
 						{
 							"key": "email",
-							"value": "ill.better.be.off@gmail.com"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "logout",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"value": "EMAIL"
 						}
 					]
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "{{base_url}}:{{port}}/auth/logout",
-					"host": [
-						"{{base_url}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"auth",
-						"logout"
-					]
-				}
+				"description": "Retrieves the values to confirm the user identity and allows the user to reset the password."
 			},
 			"response": []
 		},
@@ -258,16 +213,27 @@
 						"auth",
 						"google"
 					]
-				}
+				},
+				"description": "Google's SSO URL"
 			},
 			"response": []
 		},
 		{
-			"name": "/",
+			"name": "profile",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -275,15 +241,51 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "{{base_url}}:{{port}}/",
+					"raw": "{{base_url}}:{{port}}/auth/profile",
 					"host": [
 						"{{base_url}}"
 					],
 					"port": "{{port}}",
 					"path": [
-						""
+						"auth",
+						"profile"
 					]
-				}
+				},
+				"description": "Return the logged user's information."
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{base_url}}:{{port}}/auth/logout",
+					"host": [
+						"{{base_url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth",
+						"logout"
+					]
+				},
+				"description": "Deletes the active `session_token` from the database."
 			},
 			"response": []
 		},
@@ -305,7 +307,8 @@
 					"path": [
 						"calculator"
 					]
-				}
+				},
+				"description": "\\[ BACKLOG \\]\n\nRetrieves the values defined in the initial wizard and calculates the Carbon Footprint."
 			},
 			"response": []
 		},
@@ -315,6 +318,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -330,7 +343,8 @@
 					"path": [
 						"get-accumulated"
 					]
-				}
+				},
+				"description": "\\[ BACKLOG \\]\n\nReturns the user's total Carbon Footprint filtered by month and vertical."
 			},
 			"response": []
 		},
@@ -340,6 +354,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -355,16 +379,27 @@
 					"path": [
 						"get-daily-completed"
 					]
-				}
+				},
+				"description": "Returns the total of daily tasks completed to improve the user's Carbon Footprint."
 			},
 			"response": []
 		},
 		{
-			"name": "get-daily",
+			"name": "get-daily-results/:id",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -372,15 +407,17 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "{{base_url}}:{{port}}/get-daily",
+					"raw": "{{base_url}}:{{port}}/get-daily-results/1",
 					"host": [
 						"{{base_url}}"
 					],
 					"port": "{{port}}",
 					"path": [
-						"get-daily"
+						"get-daily-results",
+						"1"
 					]
-				}
+				},
+				"description": "Returns the user's Carbon Footprint by vertical."
 			},
 			"response": []
 		},
@@ -390,6 +427,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -406,13 +453,24 @@
 						"get-actions",
 						"transporte"
 					]
-				}
+				},
+				"description": "\\[ BACKLOG \\]\n\nReturn suggested actions by vertical, to improve the user's Carbon Footprint."
 			},
 			"response": []
 		},
 		{
 			"name": "update-actions",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -420,16 +478,16 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "{{base_url}}:{{port}}/update-actions/transporte",
+					"raw": "{{base_url}}:{{port}}/update-actions",
 					"host": [
 						"{{base_url}}"
 					],
 					"port": "{{port}}",
 					"path": [
-						"update-actions",
-						"transporte"
+						"update-actions"
 					]
-				}
+				},
+				"description": "\\[ BACKLOG \\]\n\nUpdates the desired actions the user wants to accomplish on daily basis."
 			},
 			"response": []
 		},
@@ -439,6 +497,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -454,32 +522,8 @@
 					"path": [
 						"get-logros"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
 				},
-				"url": {
-					"raw": "{{base_url}}:{{port}}/",
-					"host": [
-						"{{base_url}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						""
-					]
-				}
+				"description": "\\[ BACKLOG \\]\n\nReturn the user's achievements by done activities."
 			},
 			"response": []
 		},
@@ -489,6 +533,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -505,7 +559,8 @@
 						"ranking",
 						"get-users"
 					]
-				}
+				},
+				"description": "Return all users based on location."
 			},
 			"response": []
 		},
@@ -532,13 +587,24 @@
 						"get-user",
 						"1"
 					]
-				}
+				},
+				"description": "Return one user by ID."
 			},
 			"response": []
 		},
 		{
 			"name": "/ get-comparative",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -566,65 +632,24 @@
 						"ranking",
 						"get-comparative"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
 				},
-				"url": {
-					"raw": "{{base_url}}:{{port}}/",
-					"host": [
-						"{{base_url}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/ get-user/:id",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "{{base_url}}:{{port}}/user/get-user/7",
-					"host": [
-						"{{base_url}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"user",
-						"get-user",
-						"7"
-					]
-				}
+				"description": "Returns the total monthly Carbon Footprint of the logged user, versus a selected user by ID."
 			},
 			"response": []
 		},
 		{
 			"name": "/ feedback",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -647,41 +672,27 @@
 						"user",
 						"feedback"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
 				},
-				"url": {
-					"raw": "{{base_url}}:{{port}}/",
-					"host": [
-						"{{base_url}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						""
-					]
-				}
+				"description": "Retrieves the user feedback about the platform (API and CLIENT)."
 			},
 			"response": []
 		},
 		{
-			"name": "/ get-all",
+			"name": "/initiatives/ get-all",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -698,28 +709,32 @@
 						"initiatives",
 						"get-all"
 					]
-				}
+				},
+				"description": "Retrieves all initiatives available for the user to donate."
 			},
 			"response": []
 		},
 		{
-			"name": "/ get-one/:id",
+			"name": "/initiatives/ get-one/:id",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "",
-							"value": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+					"urlencoded": []
 				},
 				"url": {
 					"raw": "{{base_url}}:{{port}}/initiatives/get-one/1",
@@ -732,13 +747,24 @@
 						"get-one",
 						"1"
 					]
-				}
+				},
+				"description": "Get one initiative by ID."
 			},
 			"response": []
 		},
 		{
-			"name": "/ donate",
+			"name": "/initiatives/ donate",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -771,7 +797,8 @@
 						"initiatives",
 						"donate"
 					]
-				}
+				},
+				"description": "Retrieves the initiative ID, desired amount to donate, and user's email (via Client) and makes the payment."
 			},
 			"response": []
 		}
