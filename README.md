@@ -51,33 +51,33 @@ This API was part of the final project for The Bridge Bootcamp and worked with a
 
 1. Clone this repo with: 
 ```
-$ git clone <REPO-URL>
+git clone <REPO-URL>
 ``` 
 
 2. create a `.env`, based on the `.env-sample` variables:
 
 3. Install all dependencies with:
 ```
-$ npm install
+npm install
 ```
 
 4. Start the database's container with: 
 ```
-$ docker-compose up
+docker-compose up
 ```
 or 
 ```
-$ npm run docker:up
+npm run docker:up
 ```
 
 5. Create the tables, and populate the DB with the mock data (`src/database/scripts`) with:
 ```
-$ npm run DB:up
+npm run DB:up
 ```
 
 6. Start the dev server with: 
 ```
-$ npm run dev
+npm run dev
 ```
 
 7. import the `/postman/queries.json` file into your postman to test the endpoints. Define the following env variables:
