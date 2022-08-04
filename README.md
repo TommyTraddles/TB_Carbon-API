@@ -42,7 +42,7 @@ This API was part of the final project for The Bridge Bootcamp and worked with a
   - Nodemailer, google SMTP.
 - Project Management:
   - backlog: Trello.
-  - 5 sprints.
+  - 2 sprints (2 Weeks part time).
 
 <br/>
 
