@@ -6,9 +6,11 @@ const insert = async () => {
 
     return db.transaction( async tx => {
 
-    // users
+    /**
+     * review all the SQL queries to debug the foreign key integrity constraint. insert or update on table "usuarios" violates foreign key constraint "usuarios_id_usuario_fkey".
+     */
     await tx.query(sql`
-
+      
     
 
     `)

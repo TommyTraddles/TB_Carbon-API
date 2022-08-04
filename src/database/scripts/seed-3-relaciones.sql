@@ -176,3 +176,106 @@ INSERT INTO Servicios
         (id_servicio, id_organizacion, hcarbono_asignada, descripcion_detallada)
     VALUES
         ('9f64de4a-8021-415a-ac7e-20668703ee52', 'ae4ec672-18e1-4aa3-9a3f-f2e06dfb2422', 0, 'Este hash es necesario para cuando no existe un servicio asignado.');
+
+-- ✅
+INSERT INTO actividad_fisica
+        (id_formulario, id_deporte, n_h_sem)
+    VALUES
+        ('f6966dfa-3654-4d4e-974a-3b8b118ee647', 'c1d3b681-b53a-48e0-beea-860a7b40da68', '10'),
+        ('0e543e72-d63b-42de-8e0d-eba71ddc741b', 'c1d3b681-b53a-48e0-beea-860a7b40da68', '3'),
+        ('0e543e72-d63b-42de-8e0d-eba71ddc741b', '730461a9-c2a5-477e-9f09-e2da08e37845', '7'),
+        ('e7e137b7-17cf-41e4-9270-6268d10444ae', '052cd8e6-d6fd-4671-b0a9-f645982c493d', '18'),
+        ('087d1601-14e7-4508-abe2-f94273b4315c', 'c1d3b681-b53a-48e0-beea-860a7b40da68', '2'),
+        ('087d1601-14e7-4508-abe2-f94273b4315c', '730461a9-c2a5-477e-9f09-e2da08e37845', '6'),
+        ('087d1601-14e7-4508-abe2-f94273b4315c', 'ce33bd1e-febc-4d48-9484-8a76a7096d69', '4'),
+        ('6d724bf5-17ca-4d01-828e-615f15b3ef0c', '730461a9-c2a5-477e-9f09-e2da08e37845', '7'),
+        ('6d724bf5-17ca-4d01-828e-615f15b3ef0c', 'c1d3b681-b53a-48e0-beea-860a7b40da68', '9'),
+        ('b4c37f45-33c1-4ddf-a7e2-f7da8a97cb88', '052cd8e6-d6fd-4671-b0a9-f645982c493d', '1'),
+        ('e5f0dd92-9bad-4053-8185-f93a8bb61410', '730461a9-c2a5-477e-9f09-e2da08e37845', '1');
+
+-- ✅
+INSERT INTO vacaciones
+        (id_formulario, id_alojamiento, n_dias)
+    VALUES
+        ('f6966dfa-3654-4d4e-974a-3b8b118ee647', 'f272ca1b-5d83-4bc1-a031-2393675a40d1', '7'),
+        ('0e543e72-d63b-42de-8e0d-eba71ddc741b', '07c07ac0-7840-4782-8269-f38a630f86f1', '12'),
+        ('e7e137b7-17cf-41e4-9270-6268d10444ae', '352ec9ca-4b2b-49d4-b61b-cf82c53cd7a9', '9'),
+        ('087d1601-14e7-4508-abe2-f94273b4315c', '07c07ac0-7840-4782-8269-f38a630f86f1', '4'),
+        ('6d724bf5-17ca-4d01-828e-615f15b3ef0c', '485f1d7b-d1f3-4968-af23-8769bf3d4230', '15'),
+        ('b4c37f45-33c1-4ddf-a7e2-f7da8a97cb88', 'f6d761f4-031d-4839-ae79-af8554cf650d', '3'),
+        ('e5f0dd92-9bad-4053-8185-f93a8bb61410', '5c1ecd2f-931c-4271-beaf-39d02b4e9eb2', '7'),
+        ('e7e137b7-17cf-41e4-9270-6268d10444ae', '485f1d7b-d1f3-4968-af23-8769bf3d4230', '16');
+
+-- ✅
+INSERT INTO viajes
+        (id_formulario, id_transporte, vacacional, distancia_km, n_horas_sem)
+    VALUES
+        ('f6966dfa-3654-4d4e-974a-3b8b118ee647', '67304583-86b1-4923-9e1b-eb9efa38434a', false, '450', '11'),
+        ('0e543e72-d63b-42de-8e0d-eba71ddc741b', '4c41495e-b566-44ef-b371-f41d9aa9d74a', false, '', '15'),
+        ('e7e137b7-17cf-41e4-9270-6268d10444ae', '4c41495e-b566-44ef-b371-f41d9aa9d74a', false, '', '9'),
+        ('087d1601-14e7-4508-abe2-f94273b4315c', '7a247ba8-92ab-49a7-8d40-0d6c605eced4', false, '400', '8'),
+        ('6d724bf5-17ca-4d01-828e-615f15b3ef0c', '7a247ba8-92ab-49a7-8d40-0d6c605eced4', false, '800', '7'),
+        ('b4c37f45-33c1-4ddf-a7e2-f7da8a97cb88', '7a247ba8-92ab-49a7-8d40-0d6c605eced4', false, '350', '8'),
+        ('e5f0dd92-9bad-4053-8185-f93a8bb61410', '7a247ba8-92ab-49a7-8d40-0d6c605eced4', false, '843', '40'),
+        ('b4c37f45-33c1-4ddf-a7e2-f7da8a97cb88', 'ed738239-a6d5-4031-b008-e608d7dc3567', false, '200', '3'),
+        ('f6966dfa-3654-4d4e-974a-3b8b118ee647', 'f59f58f2-740c-4236-bd46-ff58952fb55d', true, '1000', '216'),
+        ('e5f0dd92-9bad-4053-8185-f93a8bb61410', 'ed738239-a6d5-4031-b008-e608d7dc3567', false, '100', '3'),
+        ('e5f0dd92-9bad-4053-8185-f93a8bb61410', '31c43329-3f3e-4559-a05c-23dee3066320', true, '653', '6'),
+        ('e5f0dd92-9bad-4053-8185-f93a8bb61410', 'f59f58f2-740c-4236-bd46-ff58952fb55d', true, '480', '12'),
+        ('e7e137b7-17cf-41e4-9270-6268d10444ae', '31c43329-3f3e-4559-a05c-23dee3066320', true, '1500', '4'),
+        ('087d1601-14e7-4508-abe2-f94273b4315c', '5ed76720-6fb1-4dc5-8a56-ac5c7e9d9311', true, '50', '5');
+
+-- ✅
+INSERT INTO actividades_sustituciones
+        (id_usuario, id_serv_org, tipo_act, ambito_act, hcarbono_asignada, descripcion_detallada)
+    VALUES
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', '827abcbc-a081-490b-9eae-9fdddd324931', 'Dejar de comer carne roja', 'Alimentación', '204', 'Dejar de comer carne roja'),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '827abcbc-a081-490b-9eae-9fdddd324931', 'Desconectar el cargador del móvil mientras no lo usas', 'Hogar', '10', 'Desconectar el cargador del móvil mientras no lo usas'),
+        ('5560b217-eeb7-44ba-b31a-da3cc23f719b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Divulgar un estilo de vida sostenible', 'Otros', '34', 'Divulgar un estilo de vida sostenible'),
+        ('b0c3403a-0b4a-4007-9dc8-c21f86224ede', '827abcbc-a081-490b-9eae-9fdddd324931', 'Elegir productos elaborados localmente', 'Otros', '33', 'Elegir productos elaborados localmente'),
+        ('2139fb78-7d80-427f-a1d6-87d2b892e5be', '827abcbc-a081-490b-9eae-9fdddd324931', 'Emplear el microondas en lugar del horno', 'Hogar', '10', 'Emplear el microondas en lugar del horno'),
+        ('16866e30-6682-4768-b384-ce0edb63271d', '827abcbc-a081-490b-9eae-9fdddd324931', 'Emplear un programa de lavado de ropa con agua fría', 'Hogar', '11', 'Emplear un programa de lavado de ropa con agua fría'),
+        ('895a109a-2f85-425a-b439-eb9599cbaf6b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Evitar conducir al trabajo en horas punta', 'Transporte', '337', 'Evitar conducir al trabajo en horas punta'),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', '827abcbc-a081-490b-9eae-9fdddd324931', 'Evitar dejar aparatos en standby', 'Hogar', '11', 'Evitar dejar aparatos en standby'),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '827abcbc-a081-490b-9eae-9fdddd324931', 'Evitar el uso del coche en desplazamientos por ocio', 'Transporte', '597', 'Evitar el uso del coche en desplazamientos por ocio'),
+        ('5560b217-eeb7-44ba-b31a-da3cc23f719b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Fabricar tu propio jabón', 'Hogar', '23', 'Fabricar tu propio jabón'),
+        ('b0c3403a-0b4a-4007-9dc8-c21f86224ede', '827abcbc-a081-490b-9eae-9fdddd324931', 'Hacer la compra en Ecomarkt', 'Alimentación', '232', 'Hacer la compra en Ecomarkt'),
+        ('2139fb78-7d80-427f-a1d6-87d2b892e5be', '827abcbc-a081-490b-9eae-9fdddd324931', 'Hacer la compra en La tienda de la abuela', 'Alimentación', '291', 'Hacer la compra en La tienda de la abuela'),
+        ('16866e30-6682-4768-b384-ce0edb63271d', '827abcbc-a081-490b-9eae-9fdddd324931', 'Hacer la compra en Naturtable', 'Alimentación', '241', 'Hacer la compra en Naturtable'),
+        ('895a109a-2f85-425a-b439-eb9599cbaf6b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Imprimir a dos caras', 'Otros', '12', 'Imprimir a dos caras'),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', '827abcbc-a081-490b-9eae-9fdddd324931', 'Ir al mercado de abastos', 'Otros', '645', 'Ir al mercado de abastos'),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '827abcbc-a081-490b-9eae-9fdddd324931', 'Ir por las escaleras, evitar coger el ascensor', 'Otros', '31', 'Ir por las escaleras, evitar coger el ascensor'),
+        ('5560b217-eeb7-44ba-b31a-da3cc23f719b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Limpiar con productos naturales', 'Hogar', '14', 'Limpiar con productos naturales'),
+        ('b0c3403a-0b4a-4007-9dc8-c21f86224ede', '827abcbc-a081-490b-9eae-9fdddd324931', 'Minimizar el desperdicio de comida cuando comes fuera', 'Alimentación', '44', 'Minimizar el desperdicio de comida cuando comes fuera'),
+        ('2139fb78-7d80-427f-a1d6-87d2b892e5be', '827abcbc-a081-490b-9eae-9fdddd324931', 'Minimizar el desperdicio de comida en casa', 'Alimentación', '97', 'Minimizar el desperdicio de comida en casa'),
+        ('16866e30-6682-4768-b384-ce0edb63271d', '827abcbc-a081-490b-9eae-9fdddd324931', 'Moto sharing Cabify', 'Transporte', '449', 'Moto sharing Cabify'),
+        ('895a109a-2f85-425a-b439-eb9599cbaf6b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Obtener un compostador', 'Hogar', '22', 'Obtener un compostador'),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', '827abcbc-a081-490b-9eae-9fdddd324931', 'Plantar un árbol', 'Otros', '99', 'Plantar un árbol'),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '827abcbc-a081-490b-9eae-9fdddd324931', 'Poner el lavavajillas cuando está lleno', 'Hogar', '10', 'Poner el lavavajillas cuando está lleno'),
+        ('5560b217-eeb7-44ba-b31a-da3cc23f719b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Preparar té a granel y no en bolsitas', 'Alimentación', '232', 'Preparar té a granel y no en bolsitas'),
+        ('b0c3403a-0b4a-4007-9dc8-c21f86224ede', '827abcbc-a081-490b-9eae-9fdddd324931', 'Programar termostato según presencia en casa', 'Hogar', '24', 'Programar termostato según presencia en casa'),
+        ('2139fb78-7d80-427f-a1d6-87d2b892e5be', '827abcbc-a081-490b-9eae-9fdddd324931', 'Rechazar productos de merchandising', 'Otros', '33', 'Rechazar productos de merchandising'),
+        ('16866e30-6682-4768-b384-ce0edb63271d', '827abcbc-a081-490b-9eae-9fdddd324931', 'Sustituir el coche por la bici', 'Transporte', '299', 'Sustituir el coche por la bici'),
+        ('895a109a-2f85-425a-b439-eb9599cbaf6b', '827abcbc-a081-490b-9eae-9fdddd324931', 'Sustituir los refrescos por agua', 'Alimentación', '291', 'Sustituir los refrescos por agua'),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', '827abcbc-a081-490b-9eae-9fdddd324931', 'Tapar ollas, cazuelas y sartenes al cocinar', 'Hogar', '10', 'Tapar ollas, cazuelas y sartenes al cocinar'),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '827abcbc-a081-490b-9eae-9fdddd324931', 'Un día de desconexión digital', 'Otros', '24', 'Un día de desconexión digital');
+
+
+-- ✅
+INSERT INTO hc0_calculo
+        (ID_usuario, ID_formulario, Fecha_calculo, Hogar, Transporte, Alimentacion, Otros, Inicial)
+    VALUES
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-12-02', '98', '750', '411', '108', false),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-12-01', '104', '498', '138', '128', false),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-11-30', '130', '128', '200', '103', false),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-11-29', '152', '455', '125', '128', false),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-11-28', '253', '754', '430', '141', false),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-11-27', '135', '841', '455', '129', false),
+        ('7379aab0-8770-46a7-98b0-f3b9ff1a45ac', 'f6966dfa-3654-4d4e-974a-3b8b118ee647', '2021-11-26', '125', '856', '455', '127', true),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-12-02', '152', '458', '233', '354', true),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-12-01', '152', '1123', '458', '420', false),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-11-30', '308', '120', '133', '471', false),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-11-29', '362', '985', '675', '458', false),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-11-28', '451', '855', '355', '432', false),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-11-27', '365', '1420', '452', '412', false),
+        ('915274d2-a765-4f4e-8819-82c337d700d2', '0e543e72-d63b-42de-8e0d-eba71ddc741b', '2021-11-26', '382', '1522', '682', '455', true);

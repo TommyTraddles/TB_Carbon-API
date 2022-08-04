@@ -1,4 +1,5 @@
 
+-- USER INPUT
 INSERT INTO users 
     (email, hash, token_confirm ) 
   VALUES
@@ -10,6 +11,7 @@ INSERT INTO users
     ('Mari.Carmen.Gonzalez@hotmail.es', 'Maca_laguapa', 'token'),
     ('Jose.Ma.Apolo@hotmail.com', 'JMApolo', 'token');
 
+-- GET acciones
 INSERT INTO ACTIVIDADES_REDUCCION 
    (Titulo_act, Ambito, Descripcion, Cantidad_reducible, Promocionado, Num_dias_para_logro) 
   VALUES
